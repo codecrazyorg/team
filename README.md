@@ -1,4 +1,4 @@
-# CODECRAZY TEAM SITE
+# CODECRAZY
 
 ## PURPOSE
 We write `computer code` to build crazy cool things.
