@@ -1,4 +1,4 @@
-# CODECRAZY TEAM REPO SITE
+# CODECRAZY TEAM SITE
 
 ## PURPOSE
 We write `computer code` to build crazy cool things.
@@ -9,7 +9,7 @@ Our website is [CodeCrazy.org](https://codecrazy.com)
 ## GITHUB PROJECT REPOSITORY
 Please view our current projects by visiting [our GitHub organization page](https://github.com/codecrazyorg) at [https://github.com/codecrazyorg](https://github.com/codecrazyorg).
 
-## CLONE REPO
+## CLONE OUR TEAM REPO
 To clone our main `team` repo, use one of the following methods:
 1. **HTTPS**
 
