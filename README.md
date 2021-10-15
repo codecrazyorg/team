@@ -8,13 +8,17 @@ We write `computer code` to build crazy cool things.
 
 Our website is [CodeCrazy.org](https://codecrazy.com): <https://codecrazy.org>
 
-## GITHUB PROJECT REPOSITORY
+## REPOSITORY
 
 Please view our current projects by visiting [our GitHub organization page](https://github.com/codecrazyorg) at [https://github.com/codecrazyorg](https://github.com/codecrazyorg).
 
-## VSCODE ONLINE CODESPACE (TEAM ONLY)
+## CODESPACE
 
 If you are a `Code Crazy` team member, [click here](https://ogmath-codecrazyorg-team-r474q5grpf5r96.github.dev/) to access our **[Team Codespace](https://ogmath-codecrazyorg-team-r474q5grpf5r96.github.dev/)** to run **VS Code** from your web browser.
+
+## CODING ROOMS CLASSES
+
+We have 10 [Coding Rooms](https://app.codingrooms.com/) courses linked to our [GitHub Code Crazy Team](https://github.com/codecrazyorg) which may be accessed by [clicking here](https://app.codingrooms.com/management/courses/5655/).
 
 ## CLONE OUR TEAM REPO
 
