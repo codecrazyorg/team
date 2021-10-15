@@ -1,49 +1,52 @@
 # CODECRAZY
 
 ## PURPOSE
+
 We write `computer code` to build crazy cool things.
 
 ## WEBSITE
-Our website is [CodeCrazy.org](https://codecrazy.com): https://codecrazy.org
+
+Our website is [CodeCrazy.org](https://codecrazy.com): <https://codecrazy.org>
 
 ## GITHUB PROJECT REPOSITORY
+
 Please view our current projects by visiting [our GitHub organization page](https://github.com/codecrazyorg) at [https://github.com/codecrazyorg](https://github.com/codecrazyorg).
 
 ## CLONE OUR TEAM REPO
+
 To clone our main `team` repo `install Git`[^1] then run one of the following commands:
 
 ### **HTTPS**
-      
+
    If using **Unix**, **Linux**, or **BSD**[^3]:
-      
+
    ```
    sudo git clone https://github.com/codecrazyorg/team.git
    ```
-      
+
    If using **Windows Powershell**[^4] or **MacOS Terminal**[^bignote]:
-      
+
    ```
    git clone https://github.com/codecrazyorg/team.git
    ```
-      
+
 ### **SSH**[^6]
 
    ```
    git@github.com:codecrazyorg/team.git
    ```
-      
-### **GITHUB CLI** 
+
+### **GITHUB CLI**
 
    ```
    gh repo clone codecrazyorg/team
    ```
 
-
 ## COMMIT AND PUSH CHANGES TO REPO
 
 1. LEARN HOW TO USE GIT
 
-[This link](https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html) will show you the basic steps of using Git's version control commands to initialize your local directory, clone repos, make changes and commit those changes, push and pull, etc., basically everything: https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html
+[This link](https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html) will show you the basic steps of using Git's version control commands to initialize your local directory, clone repos, make changes and commit those changes, push and pull, etc., basically everything: <https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html>
 
 2. OBTAIN A PERSONAL SECURITY TOKEN
 
@@ -52,10 +55,12 @@ Team members are now required to obtain a [personal security token](https://docs
 3. CLONE THE REPO AND ADD OR CHANGE SOMETHING
 
 ## LICENSE
+
 Our projects all fall under the [MIT License](https://opensource.org/licenses/MIT); we are supporters of the [Open Source Software Initiative](https://opensource.org/).
 
 ## CONTACT
-[Email us](mailto:team@codecrazy.org): 
+
+[Email us](mailto:team@codecrazy.org):
 
 ```
 team@codecrazy.org
@@ -70,10 +75,9 @@ team@codecrazy.org
 [^4]: For Windows users you may need to **run as administrator**
 
 [^bignote]: To install Git using the MacOS command line interface, open the Terminal app by using hotkey shortcut `Shift - Command(⌘) - U` then paste this command:
-            
+
       ```
       git --version
       ```
-      
-[^6]: The SSH clone method is only for `code crazy` team members
 
+[^6]: The SSH clone method is only for `code crazy` team members
