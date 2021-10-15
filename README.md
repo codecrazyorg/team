@@ -12,6 +12,10 @@ Our website is [CodeCrazy.org](https://codecrazy.com): <https://codecrazy.org>
 
 Please view our current projects by visiting [our GitHub organization page](https://github.com/codecrazyorg) at [https://github.com/codecrazyorg](https://github.com/codecrazyorg).
 
+## VSCODE ONLINE CODESPACE (TEAM ONLY)
+
+If you are a `Code Crazy` team member, [click here](https://ogmath-codecrazyorg-team-r474q5grpf5r96.github.dev/) to access our **[Team Codespace](https://ogmath-codecrazyorg-team-r474q5grpf5r96.github.dev/)** to run **VS Code** from your web browser.
+
 ## CLONE OUR TEAM REPO
 
 To clone our main `team` repo `install Git`[^1] then run one of the following commands:
