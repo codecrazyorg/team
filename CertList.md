@@ -1,4 +1,4 @@
-#IT Certifications
+# IT Certifications
 
 ## Introduction
 * This document shows **all** the certifications you should consider obtaining for *any IT career*.
