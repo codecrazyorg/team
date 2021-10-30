@@ -7,6 +7,9 @@
 * You can spin off and pursue your specific interests and career trajectories *only after you have mastered these basics* in order to be **immediately employable**.
 * Using [PearsonVue](https://home.pearsonvue.com/Test-takers.aspx) as the portal through which you pursue *all* of these exams is **strongly recommended**.
 
+### Robert Half's 29 Most Valuable IT Certifications for Beginning IT Professionals
+* Link: https://www.roberthalf.com/blog/salaries-and-skills/which-it-certifications-are-most-valuable
+
 ## START HERE: CompTIA
 * **Absolutely required**: CompTIA certs are *universally required*. **Every** IT professional **must** achieve the **A+** level *before* starting their careers.
 * It's just *assumed* that you will have *at least* the CompTIA A+ certification; without it, IT recruiters *will not even look at your resume*
