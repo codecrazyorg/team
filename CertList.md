@@ -11,11 +11,11 @@
 * It's just *assumed* that you will have *at least* the CompTIA A+ certification; without it, IT recruiters *will not even look at your resume*
 * These CompTIA exams are presented **in order**: you must pass each one before moving on to the next level.
 
-### Structure & Oranization of CompTIA Certs
+### Structure & Organization of CompTIA Certs
 CompTIA organizes their certs as follows: 
 * Core, Infrastructure
 * Cybersecurity
-* Additional Professional": This is where you get the **mandatory** Cloud Essentials+ cert.
+* Additional Professional: This is where you get the **mandatory** Cloud Essentials+ cert.
 
 #### Core
 
