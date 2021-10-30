@@ -5,6 +5,7 @@
 * These exams will prepare you with the **fundamental breadth** required to get your first job.
 * These exams are **musts** according to multiple industry experts (working front- and backend software and hardware engineers) and my own experience as an IT recruiter.
 * You can spin off and pursue your specific interests and career trajectories *only after you have mastered these basics* in order to be **immediately employable**.
+* Using [PearsonVue](https://home.pearsonvue.com/Test-takers.aspx) as the portal through which you pursue *all* of these exams is **strongly recommended**.
 
 ## START HERE: CompTIA
 * **Absolutely required**: CompTIA certs are *universally required*. **Every** IT professional **must** achieve the **A+** level *before* starting their careers.
