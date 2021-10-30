@@ -55,7 +55,11 @@ Level | Exam                                                  | Organization    
 1     | CPA – C++ Certified Associate Programmer              | The C++ Institute            | http://www.cppinstitute.org/cpa-c-certified-associate-programmer-certification
 2     | CPP – C++ Certified Professional Programmer           | The C++ Institute            | http://www.cppinstitute.org/cpp-c-certified-professional-programmer
 
-
+## ORACLE SQL & MySQL
+* This is a separate category from Programming & Software development because Oracle has an entire suite of certs.
+* Oracle is a **massive** company as big and as important as Microsoft, Amazon, Apple, or any of the other [FAAMG](https://vested.co.in/blog/what-is-fang-or-is-it-faang-or-faamg/) companies, so Oracle is *not merely* about SQL.
+* SQL (**S**tructured **Q**uery **L**anguage) [is a programming language](https://en.wikipedia.org/wiki/SQL); however, it's use is *domain-specific* to relational databases.
+* See [RDBMS](https://en.wikipedia.org/wiki/Relational_database#RDBMS) for more info on relational databases.
 
 # Attribution & Thanks
 Thank you to [Otosakaa](https://github.com/Otosakaa) for showing [this master exams list](https://home.pearsonvue.com/Test-takers/A-to-Z-program-list/View-all.aspx) where I found everything you see above. **Much appreciated**. - Morelli
