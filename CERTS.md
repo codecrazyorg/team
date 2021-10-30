@@ -41,6 +41,21 @@ Core     | Exam Code  | Number of Questions | Length of Test | Passing Score    
 Core 1   | 220-1001   | 90 questions        | 90 minutes     | 675 on a scale of 100-900 (~85%)   | 1 year in IT or ITF+ Cert | [Core 1 Study Guide](https://www.comptia.org/training/books/a-core-1-220-1001-study-guide)
 Core 2   | 220-1002   | 90 questions        | 90 minutes     | 700 (on a scale of 100-900) (~88%) | Must have passed Core 1   | [Core 2 Study Guide](https://www.comptia.org/training/books/a-core-2-220-1002-study-guide)
 
+## Microsoft Technology Associate (MTA) Exam 98-382: Introduction to Programming Using JavaScript
+* Link to **all** MSFT certs (289 in total): https://docs.microsoft.com/en-us/learn/certifications/browse/
+* Exam 98-349: Windows Operating System Fundamentals
+* Exam 98-361: Software Development Fundamentals
+* Exam 98-364: Database Fundamentals
+* Exam 98-365: Windows Server Administration Fundamentals
+* Exam 98-366: Networking Fundamentals
+* Exam 98-367: Security Fundamentals
+* Exam 98-368: Mobility and Devices Fundamentals
+* Exam 98-375: HTML5 Application Development Fundamentals
+* Exam 98-381: Introduction to Programming Using Python
+* Exam 98-382: Introduction to Programming Using JavaScript
+* Exam 98-383: Introduction to Programming Using HTML and CSS
+* Exam 98-388: Introduction to Programming Using Java
+
 ## Programming & Software Development
 
 ### The C Programming Language
@@ -54,6 +69,40 @@ Level | Exam                                                  | Organization    
 ----- | ----------------------------------------------------- | ---------------------------- | ------------------------------------------------------------------------
 1     | CPA – C++ Certified Associate Programmer              | The C++ Institute            | http://www.cppinstitute.org/cpa-c-certified-associate-programmer-certification
 2     | CPP – C++ Certified Professional Programmer           | The C++ Institute            | http://www.cppinstitute.org/cpp-c-certified-professional-programmer
+
+## Python Certifications
+
+### PCAP (Python Institute)
+The following Python Institute certifications are **in order**. Here is the Python Institute [website](https://pythoninstitute.org/certification/).
+1. PCEP – Certified Entry-Level Python Programmer
+2. PCAP – Certified Associate in Python Programming
+3. PCPP2 – Certified Professional in Python Programming 2
+4. CEPP – Certified Expert in Python Programming
+
+## JavaScript (JS)
+
+### Certified JavaScript Developer from W3 Schools
+* Link: https://courses.w3schools.com/courses/javascript
+
+### CJSD (Certified JavaScript Developer) from the International JavaScript Institute
+* 90 minute test
+* Passing Percentage 70%
+* Prerequisites: None
+* Question types: Single-choice, multiple choice, free write
+* Total Questions: 70
+* Link: https://www.javascriptinstitute.org/javascript-certification/
+
+## RPA Certification for UIPath
+* Introduction to the process of designing, automating, deploying, and maintaining robotic process infrastructures.
+* Link to site: https://www.uipath.com/learning/certification
+
+## Linux
+
+### LinuC (Linux Professional Certification)
+* Link to site: https://home.pearsonvue.com/linuc
+
+### LPI (Linux Professional Institute
+* https://home.pearsonvue.com/lpi
 
 ## DATABASES: ORACLE & SQL
 * This is a separate category from Programming & Software development because Oracle has an entire suite of certs.
