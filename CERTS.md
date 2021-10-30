@@ -14,7 +14,8 @@
 
 ### Structure & Organization of CompTIA Certs
 CompTIA organizes their certs as follows: 
-* Core, Infrastructure
+* Core
+* Infrastructure
 * Cybersecurity
 * Additional Professional: This is where you get the **mandatory** Cloud Essentials+ cert.
 
