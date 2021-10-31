@@ -20,7 +20,7 @@
 
 ### Structure & Organization of CompTIA Certs
 
-CompTIA organizes their certs as follows: 
+CompTIA organizes their certs as follows:
 
 * Core
 * Infrastructure
@@ -40,7 +40,7 @@ FC0-U61    | 75 multiple choice  | 60 minutes     | 650 out of 900 (~73%)  | **N
 
 ##### CompTIA A+
 
-* This is **the main cert** that will launch your IT career. Get it **asap**. 
+* This is **the main cert** that will launch your IT career. Get it **asap**.
 * You must pass the CompTIA ITF+ exam *before* you go for A+.
 * There are **2 parts** (called "Cores") to the A+ exam; you much pass **both** to be A+ certified.
 * **Recommended**: Use *all* of CompTIA's **CertMaster A+** online training modules including [Learn](https://www.comptia.org/training/certmaster-learn/a), [Practice](https://www.comptia.org/training/certmaster-practice/a) and [Labs](https://www.comptia.org/training/certmaster-labs/a).
