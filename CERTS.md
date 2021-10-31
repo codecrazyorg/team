@@ -131,6 +131,130 @@ The following Python Institute certifications are **in order**. Here is the Pyth
 * SQL (**S**tructured **Q**uery **L**anguage) [is a programming language](https://en.wikipedia.org/wiki/SQL); however, it is not a *general purpose* language; rather, it's use is *domain-specific* to relational databases. Specifically, SQL is a *query* language. [Read this](https://www.sciencedirect.com/topics/computer-science/database-languages) to learn the distinction between all the various types of database languages to learn where SQL fits into the mix and why it is *so important*. See [RDBMS](https://en.wikipedia.org/wiki/Relational_database#RDBMS) for more info on **r**elational **d**atabase **m**anagement **s**ystems.
 * While there are *many* databases out there ([see here to learn about them](https://www.matillion.com/resources/blog/the-types-of-databases-with-examples)) **SQL lies at the core** of *everything* database-related so you *must learn it first*.
 
+
+
+Python - MOSTLY with AWS
+Java
+Go - MOSTLY with GCP
+Ruby - OFTEN with GCP
+C# - OFTEN with Azure
+Java - OFTEN with AWS
+ASP.NET - OFTEN with Azure
+.NET (ALL) - Generally with Azure
+JavaScript:
+	Flavors:
+		AngularJS - OFTEN with GCP
+		NodeJS - OFTEN with GCP and Azure
+C - ABSOLUTELY REQUIRED FOR ALL AWS, GCP, AZURE
+C++ - ABSOLUTELY REQUIRED FOR ALL AWS, GCP, AZURE BACKEND
+PHP - Generally needed for all AWS, GCP, AZURE
+IaaS (Infrastructure as a Service) - everyone
+SaaS (Software as a Service) - everone
+Puppet - AZURE
+Chef - AZURE
+Git - AZURE
+Docker - AZURE
+Kubernetes - AZURE
+Nagios - AZURE
+Terraform - AZURE 
+Linux/Unix complete master - ALL
+SQL - ALL
+XML, SOAP, WSDL
+
+
+
+TIPS FROM WORKING CLOUD ENGINEERS ONLINE REDDIT
+Learn Linux (Is a Must), Learn Github (Is a Must), a config management tool (Chef/Salt/Ansible), an infra management (Cloudformation/Terraform), and a CICD tool (Jenkins, CodePipeline).
+Learn Kubernetes.
+
+Read The Kubernetes Book by Nigel Poulton (easy read, really great start)
+
+Check out Kubernetes The Hard Way (just once, dont be afraid if you fuck it up, it's more to see what is happening under the hood).
+
+Build a k3s cluster (use k3sup or k3d to bootstrap).
+
+Mess around with common deployment methods (helm and kustomize)
+
+Build a simple CI/CD pipeline (ArgoCD+Git, Jenkins, etc)
+
+Build out a simple monitoring system (Prometheus + Grafana)
+
+Explore things like ElasticSearch, shovel logs into it with fluentd -> kafka -> logstash -> elasticsearch -> Kibana as a frontend
+Keep getting better at Terraform, it's huge.
+
+Get good with basic bash scripting and python
+
+Get a github acct and contribute to software by reporting bugs in git, if you can, contribute eventually.
+
+Start with learning TCP, TLS and HTTP and also learn Linux to the level that you could pass the RHCE7 cert.
+
+Learn kubernetes. Security. Load balancing. Reverse proxy. Service mesh. Networking. Storage. Probably a few more I’m forgetting.
+
+I’m fairly convinced that if you were expert in storage and networking only, you could make a career on those 2 alone.
+
+You can start kubernetes with Rancher’s k3s, or typhoon, or another of the micro distros. Simple, gets your feet wet. At home, do MetalLB as an external load balancer. Layer 2 only, unless you have a BGP router, which would be cool.
+If you have a couple machines at home, and you keep a low budget AWS account for testing, you could do a hybrid story.
+
+You’ll pick up Prometheus and Grafana and a logging solution along the way...because you’ll need to.
+
+You might consider Ansible for Kubernetes by Jeff Geerling. He’s on YouTube too. The other suggestion about Kubernetes The Hard Way is an eye opener. I wouldn’t skip it. That will show you all the stuff you don’t know.
+I like Rancher’s k3s because you’re up in a short time, and then you can add stuff in.
+
+THE CLOUD RESUME CHALLENGE: https://forrestbrazeal.com/2020/04/23/the-cloud-resume-challenge/
+
+WHIZLABS.COM - HAS ACCESS TO COURSES ON EVERYTHING
+
+
+
+CL
+PowerShell
+Bash
+
+Role Vertical
+1. Solutions Architect
+2. Cloud Developer
+3. SysOps Administrator
+4. Cloud Network Engineer
+5. Cloud DevOps Engineer
+
+Exams Required for MS Azure
+Microsoft Azure Architect Technologies (AZ-303 & AZ-304) exam
+Azure AZ-900, Microsoft AZ-104, Microsoft AZ-303, Microsoft AZ-304, and Microsoft AZ-500.
+
+Courses:
+Edureka - Microsoft Azure Certification Training Course https://www.edureka.co/microsoft-certified-azure-solution-architect-certification-training Microsoft Azure Architect Technologies (AZ-303 & AZ-304) exam
+
+Cybrary: https://www.cybrary.it/catalog/career-path/microsoft-azure-cloud-engineer/ 
+prepares you for Azure AZ-900, Microsoft AZ-104, Microsoft AZ-303, Microsoft AZ-304, and Microsoft AZ-500.
+
+
+AZ-900 Microsoft Azure Fundamentals
+Azure Policies
+Azure Storage Accounts
+Automate Deployment of Azure Virtual Machines
+AZ-104: Microsoft Azure Administrator
+AZ-300: Microsoft Azure Architect Technologies
+AZ-301: Microsoft Azure Architect Design
+AZ-303: Microsoft Azure Architect Technologies (AZ-303)
+AZ-304: Microsoft Azure Architect Design (AZ-304)
+AZ-500: Microsoft Azure Security Technologies
+
+
+Actual MS Azure Job Posting for Azure Cloud Engineer:
+https://careers.microsoft.com/us/en/job/1127562
+Skills Required:
+Demonstrated hands on experience in one or more of the following:
+Core IaaS: Compute, Storage, Networking, High Availability
+Data Platform and Bigdata: SQL Server, Azure SQL DB, HDInsight/Hadoop, Machine Learning, Azure Stream Analytics, Azure Data Factory / Data Bricks
+Azure PaaS Services: Redis Cache, Service Bus, Event Hub, Cloud Service, IoT suite, Mobile Apps, etc.
+Identity and Authentication: SSO/Federation, AD/Azure AD, ADFS, etc.
+Preferred but not required: Cosmos DB, Azure Kubernetes Service
+Experience in one or more automation languages (PowerShell, Python, C#, Open Source)
+
+
+
+
+
 ## Attribution & Thanks
 
 Thank you to [Otosakaa](https://github.com/Otosakaa) for showing [this master exams list](https://home.pearsonvue.com/Test-takers/A-to-Z-program-list/View-all.aspx) where I found everything you see above. **Much appreciated**. - Morelli
