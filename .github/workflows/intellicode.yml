@@ -1,30 +1,26 @@
-# This is a basic workflow that is manually triggered
+- name: IntelliCode Team Completions
+  uses: microsoft/vs-intellicode@v1.0
 
-name: Manual workflow
+- name: Main IntelliCode Workflow
 
-# Controls when the action will run. Workflow runs when manually triggered using the UI
-# or API.
 on:
-  workflow_dispatch:
-    # Inputs the workflow accepts.
-    inputs:
-      name:
-        # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
-        # Default value if no value is explicitly provided
-        default: 'World'
-        # Input has to be provided for the workflow to run
-        required: true
+  push:
+    branches: 
+      - main # IntelliCode recommends training on main branch to increase your model availability. Switch to another branch if you'd like to reduce update frequency.
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "greet"
-  greet:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+  build:
+    runs-on: windows-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Runs a single command using the runners shell
-    - name: Send greeting
-      run: echo "Hello ${{ github.event.inputs.name }}"
+    - uses: actions/checkout@v2 #Checkout v2 by default fetches just a shallow clone of the repository (latest changes).
+      with:
+        fetch-depth: 0 # If you are using v2 We need to override the fetch-depth to fetch the entire codebase for code analysis.
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: <Your_Build_Version>
+    - name: Build with dotnet
+      run: dotnet build --configuration Release # Project needs to build before training a model.
+ - name: Train Intellicode Model
+      uses: microsoft/vs-intellicode@v1
