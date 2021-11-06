@@ -268,6 +268,7 @@ Status Message JSON output:
 	
 	```ps
 	$file.Attributes # (This fetches the current attributes of the variable `file`)
+	```
 	
 	```ps
 	$file.Attributes = @($file.Attributes,"ReadOnly") # (This command uses the assignment operator `=` and the `array operator` denoted by the "at symbol" `@` to 
