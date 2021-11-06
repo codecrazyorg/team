@@ -247,61 +247,60 @@ New-AzPublicIpAddress @ip
 	5c. A window popped up on the right side of the screen asking for an "MSIX image path"
 		5c1. Hovering over the small (i) icon revealed this tooltip:
 
-				```txt
-				"This is the path to a file share where the MSIX app attach container has been uploaded. VMs in the host must have read-only access on this path."
-				```
+	```txt
+	"This is the path to a file share where the MSIX app attach container has been uploaded. VMs in the host must have read-only access on this path."
+	```
         
-		5c2. I need to rememember to ensure IAM roles for the 3 VMs (TREE0; TREE1; & TREE2) all have read-only access using either `sudo chmod 444` (read-only command in Linux BASH; 		`attrib +r` in Elevated Windows CMD (probably not applicable here); or a similar set of commands in PowerShell--see below for PowerShell command to make read-only).
-        
-		5c3. **PowerShell Commands to Make Read-Only**
-				5c3i. First, we must get the current attributes (remember, PS commands are `verb-noun` constructions):
+6. I need to rememember to ensure IAM roles for the 3 VMs (TREE0; TREE1; & TREE2) all have read-only access using either `sudo chmod 444` (read-only command in Linux BASH; `attrib +r` in Elevated Windows CMD (probably not applicable here); or a similar set of commands in PowerShell--see below for PowerShell command to make read-only).
+7. **PowerShell Commands to Make Read-Only**
+* First, we must get the current attributes (remember, PS commands are `verb-noun` constructions):
 
-            	```pwsh
-            	get-item -Path "c:\shared\readme.txt" | format-table name, attributes # (This is just an example showing how to fetch the current attributes of the filename)
-            	$file = Get-Item -Path "c:\shared\readme.txt" # (This assigns a variable named `file` to the path using the `$` prefix for variable assignments in PowerShell)
-            	$file.Attributes # (This fetches the current attributes of the variable `file`)
-            	$file.Attributes = @($file.Attributes,"ReadOnly") # (This command uses the assignment operator `=` and the `array operator` denoted by the "at symbol" `@` to 
-							```
+	```pwsh
+	get-item -Path "c:\shared\readme.txt" | format-table name, attributes # (This is just an example showing how to fetch the current attributes of the filename)
+	$file = Get-Item -Path "c:\shared\readme.txt" # (This assigns a variable named `file` to the path using the `$` prefix for variable assignments in PowerShell)
+	$file.Attributes # (This fetches the current attributes of the variable `file`)
+	$file.Attributes = @($file.Attributes,"ReadOnly") # (This command uses the assignment operator `=` and the `array operator` denoted by the "at symbol" `@` to 
+	```
 							
-		5c4. Example from AdamTheAutomator
-			* [AdamTheAutomator's Tutorial](https://adamtheautomator.com/how-to-make-a-file-read-only/) \
-				showing how to assign read-only access to a file he created called `readme.txt`:
-			* Note: I would do the same for my `VSCODE.msix` package
-			* ♕: I realized later I *first* needed to **convert** the `MSIX` package to either a `VHD` or `CMI` file *but I did not know this at the time* so I am posting this because *this was the timeline* of how I *tried and failed*, then *finally* learned how to do it **correctly**:
+8. Example from AdamTheAutomator
+* [AdamTheAutomator's Tutorial](https://adamtheautomator.com/how-to-make-a-file-read-only/) \
+showing how to assign read-only access to a file he created called `readme.txt`:
+** Note: I would do the same for my `VSCODE.msix` package
+** ♕: I realized later I *first* needed to **convert** the `MSIX` package to either a `VHD` or `CMI` file *but I did not know this at the time* so I am posting this because *this was the timeline* of how I *tried and failed*, then *finally* learned how to do it **correctly**:
             
-                ```ps
-                PS C:\> $file = get-item -Path "c:\shared\readme.txt"
-		```
+	```ps
+	PS C:\> $file = get-item -Path "c:\shared\readme.txt"
+	```
 		
-		```ps
-                PS C:\> $file.Attributes # Just returned Archive as only attribute in Adam's code example
-		```
+	```ps
+	PS C:\> $file.Attributes # Just returned Archive as only attribute in Adam's code example
+	```
 		
-		```ps
-                PS C:\> $file.Attributes = @($file.Attributes,"ReadOnly") # Assigns new array to `$file` existing `Attributes` (**appends** to existing attributes) and makes variable `ReadOnly`.
-		```
+	```ps
+	PS C:\> $file.Attributes = @($file.Attributes,"ReadOnly") # Assigns new array to `$file` existing `Attributes` (**appends** to existing attributes) and makes variable `ReadOnly`.
+	```
 		
-                ```ps
-		PS C:\> get-item -Path "c:\shared\readme.txt" | format-table name, attributes # This PS command fetches/returns newly-added `@ array` attributes assigned to `$file` variable, formats a simple table with two columns with headers `Name` and `Attributes`. The output was a simple table showing that `readme.txt` had been assigned the attributes `ReadOnly` and `Archive`.
-```
+	```ps
+	PS C:\> get-item -Path "c:\shared\readme.txt" | format-table name, attributes # This PS command fetches/returns newly-added `@ array` attributes assigned to `$file` variable, formats a simple table with two columns with headers `Name` and `Attributes`. The output was a simple table showing that `readme.txt` had been assigned the attributes `ReadOnly` and `Archive`.
+	```
             
+##### Error & Resolution Efforts
 * 🍕: This whole process didn't work because I had not yet converted my `MSIX` file to either VHD, VHDx, and CIM extensions (see ♝ for command used to create and ♜ for CIM extension example) since those are the only supported extensions in the Azure Portal's Host Pool MSIX Packages `Add MSIX Package` image path field. Now we move on to converting our `VSCODE.MSIX` package to have one of the supported extensions:
-
-    5d. **Converting MSIX package to have VHD, VHDx, or CIM Extension** (see 🍕 and ♕ above for reasons why I had to do this)
-        5d1. The process of converting or adding to an MSIX package either a VHD, VHDx, or CIM extension **required me to install the MSIXMGR tool** as shown in [this Microsoft Tech Community Tutorial](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/simplify-msix-image-creation-with-the-msixmgr-tool/m-p/2118585).
-    5d2. To install the `msixmgr` tool I had to complete the following steps:
-            5d2i. [Download the MSIXMGR from Microsoft](https://aka.ms/msixmgr)
-            5d2ii. Unzip MSIXMGR.zip into a local folder
-            5d2iii. Open Command prompt (CMD) in elevated mode
-            5d2iv. Navigate to the local folder from the second step
-            5d2v. Run the following CMD command:
-                * MSIXMGR Code Template
+* Converting MSIX package to have VHD, VHDx, or CIM Extension** (see 🍕 and ♕ above for reasons why I had to do this)
+* The process of converting or adding to an MSIX package either a VHD, VHDx, or CIM extension **required me to install the MSIXMGR tool** as shown in [this Microsoft Tech Community Tutorial](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/simplify-msix-image-creation-with-the-msixmgr-tool/m-p/2118585).
+* To install the `msixmgr` tool I had to complete the following steps:
+** [Download the MSIXMGR from Microsoft](https://aka.ms/msixmgr)
+** Unzip MSIXMGR.zip into a local folder
+** Open Command prompt (CMD) in elevated mode
+** Navigate to the local folder from the second step
+5d2v. Run the following CMD command:
+* MSIXMGR Code Template
 
         ```cmd
         msixmgr.exe -Unpack -packagePath <path to package> -destination <output folder> [-applyacls] [-create] [-vhdSize <size in MB>] [-filetype <CIM | VHD | VHDX>] [-rootDirectory <rootDirectory>]
         ```
 
-* ♝**MDIX to VHDx Extension Example**:
+### ♝**MDIX to VHDx Extension Example**:
 
         ```cmd
         msixmgr.exe -Unpack -packagePath "C:\Users\ssa\Desktop\FileZillaChanged_3.51.1.0_x64__81q6ced8g4aa0.msix" -destination "c:\temp\FileZillaChanged.vhdx" -applyacls -create -vhdSize 200 -filetype "vhdx" -rootDirectory apps
