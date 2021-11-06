@@ -258,10 +258,18 @@ Status Message JSON output:
 7. **PowerShell Commands to Make Read-Only**
 * First, we must get the current attributes (remember, PS commands are `verb-noun` constructions):
 
-	```pwsh
+	```ps
 	get-item -Path "c:\shared\readme.txt" | format-table name, attributes # (This is just an example showing how to fetch the current attributes of the filename)
+	```
+	
+	```ps
 	$file = Get-Item -Path "c:\shared\readme.txt" # (This assigns a variable named `file` to the path using the `$` prefix for variable assignments in PowerShell)
+	```
+	
+	```ps
 	$file.Attributes # (This fetches the current attributes of the variable `file`)
+	
+	```ps
 	$file.Attributes = @($file.Attributes,"ReadOnly") # (This command uses the assignment operator `=` and the `array operator` denoted by the "at symbol" `@` to 
 	```
 							
