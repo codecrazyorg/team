@@ -160,7 +160,10 @@ New Attempt to Deploy AVD using Wizard at 10:09 PM CDT
 Deployment Failed:
 
 EXACT ERROR MESSAGE:
-"{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/DeployOperations for usage details.","details":[{"code":"VMExtensionProvisioningError","message":"VM has reported a failure when processing extension 'joindomain'. Error message: \"Exception(s) occured while joining Domain 'codecrazy.us'\"\r\n\r\nMore information on troubleshooting is available at https://aka.ms/vmextensionwindowstroubleshoot "}]}"
+	
+	```json
+	{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/DeployOperations for usage details.","details":[{"code":"VMExtensionProvisioningError","message":"VM has reported a failure when processing extension 'joindomain'. Error message: \"Exception(s) occured while joining Domain 'codecrazy.us'\"\r\n\r\nMore information on troubleshooting is available at https://aka.ms/vmextensionwindowstroubleshoot "}]}
+	```
 
 ### More Information
 
@@ -194,13 +197,15 @@ Deployment Correlation ID: 28e4005e-bdb4-457b-ace2-9481c5ff20b6
 
 Status Message JSON output:
 
-{
-    "status": "Failed",
-    "error": {
-        "code": "VMExtensionProvisioningError",
-        "message": "VM has reported a failure when processing extension 'joindomain'. Error message: \"Exception(s) occured while joining Domain 'codecrazy.us'\"\r\n\r\nMore information on troubleshooting is available at https://aka.ms/vmextensionwindowstroubleshoot "
-    }
-}
+	```json
+	{
+	    "status": "Failed",
+	    "error": {
+		"code": "VMExtensionProvisioningError",
+		"message": "VM has reported a failure when processing extension 'joindomain'. Error message: \"Exception(s) occured while joining Domain 'codecrazy.us'\"\r\n\r\nMore information on troubleshooting is available at https://aka.ms/vmextensionwindowstroubleshoot "
+	    }
+	}
+	```
 
 ## POWERSHELL REDEPLOYMENT ATTEMPT
 
@@ -211,25 +216,23 @@ Status Message JSON output:
 * Moving on
 * Entered the following codeblock
 
-```json
-$ip = @{
-    Name = 'myStandardPublicIP'
-    ResourceGroupName = 'QuickStartCreateIP-rg'
-    Location = 'eastus2'
-    Sku = 'Standard'
-    AllocationMethod = 'Static'
-    IpAddressVersion = 'IPv4'
-    Zone = 1,2,3
-}
-New-AzPublicIpAddress @ip
-```
+	```json
+	$ip = @{
+	    Name = 'myStandardPublicIP'
+	    ResourceGroupName = 'QuickStartCreateIP-rg'
+	    Location = 'eastus2'
+	    Sku = 'Standard'
+	    AllocationMethod = 'Static'
+	    IpAddressVersion = 'IPv4'
+	    Zone = 1,2,3
+	}
+	New-AzPublicIpAddress @ip
+	```
 
 ## Creating My Own Azure Virtual Desktop
-
 * I decided to ditch the Wizard and do this manually.
 * Using powershell
-
-### Step 1: Create a host pool
+* It failed
 
 ## UPDATES AS OF FRIDAY, NOVEMBER 5, 2021
 
@@ -242,10 +245,10 @@ New-AzPublicIpAddress @ip
 4. I navigated to the new application group I had created yesterday called "
     4a. The application group would not allow me to create or upload anything because it said there were no MSIX files stored in the Treemore-HostPool, so that's where I went next:
 5. From the Azure online portal I navigated to All Resources>Treemore-HostPool
-	5a. From within the Treemore-HostPool I went to the left navigation frame and selected Manage>MSIX packages
-	5b. I clicked on the "+ Add" button.
-	5c. A window popped up on the right side of the screen asking for an "MSIX image path"
-		5c1. Hovering over the small (i) icon revealed this tooltip:
+* From within the Treemore-HostPool I went to the left navigation frame and selected Manage>MSIX packages
+* I clicked on the "+ Add" button.
+* A window popped up on the right side of the screen asking for an "MSIX image path"
+* Hovering over the small (i) icon revealed this tooltip:
 
 	```txt
 	"This is the path to a file share where the MSIX app attach container has been uploaded. VMs in the host must have read-only access on this path."
@@ -265,8 +268,8 @@ New-AzPublicIpAddress @ip
 8. Example from AdamTheAutomator
 * [AdamTheAutomator's Tutorial](https://adamtheautomator.com/how-to-make-a-file-read-only/) \
 showing how to assign read-only access to a file he created called `readme.txt`:
-** Note: I would do the same for my `VSCODE.msix` package
-** ♕: I realized later I *first* needed to **convert** the `MSIX` package to either a `VHD` or `CMI` file *but I did not know this at the time* so I am posting this because *this was the timeline* of how I *tried and failed*, then *finally* learned how to do it **correctly**:
+* Note: I would do the same for my `VSCODE.msix` package
+* ♕: I realized later I *first* needed to **convert** the `MSIX` package to either a `VHD` or `CMI` file *but I did not know this at the time* so I am posting this because *this was the timeline* of how I *tried and failed*, then *finally* learned how to do it **correctly**:
             
 	```ps
 	PS C:\> $file = get-item -Path "c:\shared\readme.txt"
@@ -289,12 +292,11 @@ showing how to assign read-only access to a file he created called `readme.txt`:
 * Converting MSIX package to have VHD, VHDx, or CIM Extension** (see 🍕 and ♕ above for reasons why I had to do this)
 * The process of converting or adding to an MSIX package either a VHD, VHDx, or CIM extension **required me to install the MSIXMGR tool** as shown in [this Microsoft Tech Community Tutorial](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/simplify-msix-image-creation-with-the-msixmgr-tool/m-p/2118585).
 * To install the `msixmgr` tool I had to complete the following steps:
-** [Download the MSIXMGR from Microsoft](https://aka.ms/msixmgr)
-** Unzip MSIXMGR.zip into a local folder
-** Open Command prompt (CMD) in elevated mode
-** Navigate to the local folder from the second step
-5d2v. Run the following CMD command:
-* MSIXMGR Code Template
+* [Download the MSIXMGR from Microsoft](https://aka.ms/msixmgr)
+* Unzip MSIXMGR.zip into a local folder
+* Open Command prompt (CMD) in elevated mode
+* Navigate to the local folder from the second step
+* Run a DOS command using the following MSIXMGR Code Template
 
 	```cmd
 	msixmgr.exe -Unpack -packagePath <path to package> -destination <output folder> [-applyacls] [-create] [-vhdSize <size in MB>] [-filetype <CIM | VHD | VHDX>] [-rootDirectory <rootDirectory>]
@@ -318,18 +320,19 @@ showing how to assign read-only access to a file he created called `readme.txt`:
 
 1. Running the above returned an error indicating `msixmgr.exe` was not installed so I [downloaded it from Mirosoft](https://github.com/microsoft/msix-packaging/releases) and ran the MSI file to install it.
 2. Unfortunately, the same error was returned, namely, "'msixmgr.exe' is not recognized as an internal or external command, operable program or batch file."
-** Here is the exact script I an in an elevated CMD:
+* Here is the exact script I an in an elevated CMD:
 
     ```cmd
     msixmgr.exe -Unpack -packagePath "C:\Users\mmore\Dropbox\PC (3)\Downloads\msixmgr (2)\x86\en-US\msixmgr.exe.mui" -destination "C:\Users\mmore\Dropbox\LAMAR CISD\GRHS\CS\Treemore\VSCODEMSIX\VSCODEVHDCIM\vscodevhdxtype.vhdx" -applyacls -create -filetype "vhdx" -rootDirectory apps
     ```
 
 3. So, we created another MSIX package for VS Code and will now re-attempt the above prompt: 
-** Here is string placed into the `-packagePath` attributed:
+* Here is string placed into the `-packagePath` attributed:
+
 	```cmd
 	"C:\Users\mmore\Dropbox\LAMAR CISD\GRHS\CS\Treemore\VSCODEMSIX\vscodemsixpkg.msix"
 	```
-** Fullly-customized command prompt command:
+* Fullly-customized command prompt command:
 
     ```cmd
     msixmgr.exe -Unpack -packagePath "C:\Users\mmore\Dropbox\PC (3)\Downloads\msixmgr (2)\x86\en-US\msixmgr.exe.mui" -destination "C:\Users\mmore\Dropbox\LAMAR CISD\GRHS\CS\Treemore\VSCODEMSIX\VSCODEVHDCIM\vscodevhdxtype.vhdx" -applyacls -create -filetype "vhdx" -rootDirectory apps
@@ -350,18 +353,23 @@ showing how to assign read-only access to a file he created called `readme.txt`:
 ./azcopy.exe copy "C:\Users\mmore\Dropbox\LAMAR CISD\GRHS\CS\Treemore\VSCODEMSIX\vscodevhd.vhd" "https://treemorefileshare.file.core.windows.net/userappfileshare/vscodevhd.vhd?se=2021-12-05T20%3A18%3A22Z&sp=rwl&sv=2018-03-28&sr=s&sig=DZF2T9AZk8k%2Bhhxz0n1dtRSjbuHkP7VcB12rheH42fk%3D" --overwrite=prompt --from-to=LocalFile --follow-symlinks --put-md5 --follow-symlinks --preserve-smb-info=false --recursive --trusted-microsoft-suffixes= --log-level=INFO;
 $env:AZCOPY_CRED_TYPE = "";
 
-6. After uploading the VHD file, go to the file share storage location of the VHD file and click the elipses "..." and copy the URL (https://treemorefileshare.file.core.windows.net/userappfileshare/vscodevhd.vhd), then go to Host Pool and click on MSIX Packages, then paste the URL to the VHD BUT make sure you change all the forward slashes to backslashes (this is mentioned nowhere--thank you Amit!). So the correct file path will be: "\\treemorefileshare.file.core.windows.net\userappfileshare\vscodevhd.vhd"
-    * Note: Amit says we may OMIT the HTTPS part and just include the file path.
-    * Begin the filepath (after deleting the HTTPs stuff) with two backslashes "\\" followed by the path.
-7. That didn't work, here's the error:
+6. After uploading the VHD file, go to the file share storage location of the VHD file and click the elipses "..." and copy the URL (https://treemorefileshare.file.core.windows.net/userappfileshare/vscodevhd.vhd), then go to Host Pool and click on MSIX Packages, then paste the URL to the VHD BUT make sure you change all the forward slashes to backslashes (this is mentioned nowhere--thank you Amit!). So the correct file path will be: 
+
+	```txt
+	"\\treemorefileshare.file.core.windows.net\userappfileshare\vscodevhd.vhd"
+	```
+
+* Note: Amit says we may OMIT the HTTPS part and just include the file path.
+* Begin the filepath (after deleting the HTTPs stuff) with two backslashes "\\" followed by the path.
+8. That didn't work, here's the error:
 
     ```json
     {"code":"400","message":"ActivityId: 6b92812a-8b36-4d17-83e6-f9d34ff24556 Error: The MSIX Application metadata expand request failed on all Session Hosts that it was sent to. Session Host: TREE-2, Error: Virtual disk not found at ≤\\\\treemorefileshare.file.core.windows.net\\userappfileshare\\vscodevhd.vhd≥.Session Host: TREE-1, Error: Virtual disk not found at ≤\\\\treemorefileshare.file.core.windows.net\\userappfileshare\\vscodevhd.vhd≥.Session Host: TREE-0, Error: Virtual disk not found at ≤\\\\treemorefileshare.file.core.windows.net\\userappfileshare\\vscodevhd.vhd≥."}
     ```
 
-    * Note: VHD stands for Virtual ____ Disk
-    * Created PublicIP for TREE0 VM: 20.119.65.41 so we could RDP to it.
-    * That did the trick--but only after I remembered to go into
+* Note: VHD stands for Virtual ____ Disk
+* Created PublicIP for TREE0 VM: 20.119.65.41 so we could RDP to it.
+* That did the trick--but only after I remembered to go into
 
 8. Created new support ticket number 2111050040007156
 
