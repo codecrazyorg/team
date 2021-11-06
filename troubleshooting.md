@@ -269,14 +269,23 @@ New-AzPublicIpAddress @ip
 			* Note: I would do the same for my `VSCODE.msix` package
 			* ♕: I realized later I *first* needed to **convert** the `MSIX` package to either a `VHD` or `CMI` file *but I did not know this at the time* so I am posting this because *this was the timeline* of how I *tried and failed*, then *finally* learned how to do it **correctly**:
             
-                ```powershell
+                ```ps
                 PS C:\> $file = get-item -Path "c:\shared\readme.txt"
+		```
+		
+		```ps
                 PS C:\> $file.Attributes # Just returned Archive as only attribute in Adam's code example
+		```
+		
+		```ps
                 PS C:\> $file.Attributes = @($file.Attributes,"ReadOnly") # Assigns new array to `$file` existing `Attributes` (**appends** to existing attributes) and makes variable `ReadOnly`.
-                PS C:\> get-item -Path "c:\shared\readme.txt" | format-table name, attributes # This PS command fetches/returns newly-added `@ array` attributes assigned to `$file` variable, formats a simple table with two columns with headers `Name` and `Attributes`. The output was a simple table showing that `readme.txt` had been assigned the attributes `ReadOnly` and `Archive`.
-                ```
+		```
+		
+                ```ps
+		PS C:\> get-item -Path "c:\shared\readme.txt" | format-table name, attributes # This PS command fetches/returns newly-added `@ array` attributes assigned to `$file` variable, formats a simple table with two columns with headers `Name` and `Attributes`. The output was a simple table showing that `readme.txt` had been assigned the attributes `ReadOnly` and `Archive`.
+```
             
-        * 🍕: This whole process didn't work because I had not yet converted my `MSIX` file to either VHD, VHDx, and CIM extensions (see ♝ for command used to create and ♜ for CIM extension example) since those are the only supported extensions in the Azure Portal's Host Pool MSIX Packages `Add MSIX Package` image path field. Now we move on to converting our `VSCODE.MSIX` package to have one of the supported extensions:
+* 🍕: This whole process didn't work because I had not yet converted my `MSIX` file to either VHD, VHDx, and CIM extensions (see ♝ for command used to create and ♜ for CIM extension example) since those are the only supported extensions in the Azure Portal's Host Pool MSIX Packages `Add MSIX Package` image path field. Now we move on to converting our `VSCODE.MSIX` package to have one of the supported extensions:
 
     5d. **Converting MSIX package to have VHD, VHDx, or CIM Extension** (see 🍕 and ♕ above for reasons why I had to do this)
         5d1. The process of converting or adding to an MSIX package either a VHD, VHDx, or CIM extension **required me to install the MSIXMGR tool** as shown in [this Microsoft Tech Community Tutorial](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/simplify-msix-image-creation-with-the-msixmgr-tool/m-p/2118585).
@@ -288,23 +297,23 @@ New-AzPublicIpAddress @ip
             5d2v. Run the following CMD command:
                 * MSIXMGR Code Template
 
-                   ```cmd
-                   msixmgr.exe -Unpack -packagePath <path to package> -destination <output folder> [-applyacls] [-create] [-vhdSize <size in MB>] [-filetype <CIM | VHD | VHDX>] [-rootDirectory <rootDirectory>]
-                    ```
+        ```cmd
+        msixmgr.exe -Unpack -packagePath <path to package> -destination <output folder> [-applyacls] [-create] [-vhdSize <size in MB>] [-filetype <CIM | VHD | VHDX>] [-rootDirectory <rootDirectory>]
+        ```
 
-                * ♝**MDIX to VHDx Extension Example**:
-                
-                    ```cmd
-                    msixmgr.exe -Unpack -packagePath "C:\Users\ssa\Desktop\FileZillaChanged_3.51.1.0_x64__81q6ced8g4aa0.msix" -destination "c:\temp\FileZillaChanged.vhdx" -applyacls -create -vhdSize 200 -filetype "vhdx" -rootDirectory apps
-                    ```
+* ♝**MDIX to VHDx Extension Example**:
+
+        ```cmd
+        msixmgr.exe -Unpack -packagePath "C:\Users\ssa\Desktop\FileZillaChanged_3.51.1.0_x64__81q6ced8g4aa0.msix" -destination "c:\temp\FileZillaChanged.vhdx" -applyacls -create -vhdSize 200 -filetype "vhdx" -rootDirectory apps
+        ```
             
-            5d2vi. Navigate to the destination folder and confirm that an MSIX image (.VHDX) was created
-           
-            ♜: **MDIX to CIM Extension Example**
-                
-                ```cmd
-                msixmgr.exe -Unpack -packagePath "C:\Users\ssa\Desktop\FileZillaChanged_3.51.1.0_x64__81q6ced8g4aa0.msix" -destination "c:\temp\FileZillaChanged.cim" -applyacls -create -vhdSize 200 -filetype "cim" -rootDirectory apps
-                ```
+        5d2vi. Navigate to the destination folder and confirm that an MSIX image (.VHDX) was created
+
+        ♜: **MDIX to CIM Extension Example**
+
+        ```cmd
+        msixmgr.exe -Unpack -packagePath "C:\Users\ssa\Desktop\FileZillaChanged_3.51.1.0_x64__81q6ced8g4aa0.msix" -destination "c:\temp\FileZillaChanged.cim" -applyacls -create -vhdSize 200 -filetype "cim" -rootDirectory apps
+        ```
 
 ## Error
 
