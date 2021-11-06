@@ -273,15 +273,15 @@ showing how to assign read-only access to a file he created called `readme.txt`:
 	```
 		
 	```ps
-	PS C:\> $file.Attributes # Just returned Archive as only attribute in Adam's code example
+	$file.Attributes # Just returned Archive as only attribute in Adam's code example
 	```
 		
 	```ps
-	PS C:\> $file.Attributes = @($file.Attributes,"ReadOnly") # Assigns new array to `$file` existing `Attributes` (**appends** to existing attributes) and makes variable `ReadOnly`.
+	$file.Attributes = @($file.Attributes,"ReadOnly") # Assigns new array to `$file` existing `Attributes` (**appends** to existing attributes) and makes variable `ReadOnly`.
 	```
 		
 	```ps
-	PS C:\> get-item -Path "c:\shared\readme.txt" | format-table name, attributes # This PS command fetches/returns newly-added `@ array` attributes assigned to `$file` variable, formats a simple table with two columns with headers `Name` and `Attributes`. The output was a simple table showing that `readme.txt` had been assigned the attributes `ReadOnly` and `Archive`.
+	get-item -Path "c:\shared\readme.txt" | format-table name, attributes # This PS command fetches/returns newly-added `@ array` attributes assigned to `$file` variable, formats a simple table with two columns with headers `Name` and `Attributes`. The output was a simple table showing that `readme.txt` had been assigned the attributes `ReadOnly` and `Archive`.
 	```
             
 ##### Error & Resolution Efforts
@@ -320,7 +320,7 @@ showing how to assign read-only access to a file he created called `readme.txt`:
 2. Unfortunately, the same error was returned, namely, "'msixmgr.exe' is not recognized as an internal or external command, operable program or batch file."
     * Here is the exact script I an in an elevated CMD:
 
-    ```powershell
+    ```ps
     msixmgr.exe -Unpack -packagePath "C:\Users\mmore\Dropbox\PC (3)\Downloads\msixmgr (2)\x86\en-US\msixmgr.exe.mui" -destination "C:\Users\mmore\Dropbox\LAMAR CISD\GRHS\CS\Treemore\VSCODEMSIX\VSCODEVHDCIM\vscodevhdxtype.vhdx" -applyacls -create -filetype "vhdx" -rootDirectory apps
     ```
 
@@ -328,7 +328,7 @@ showing how to assign read-only access to a file he created called `readme.txt`:
 
 "C:\Users\mmore\Dropbox\LAMAR CISD\GRHS\CS\Treemore\VSCODEMSIX\vscodemsixpkg.msix"
 
-    ```powershell
+    ```ps
     msixmgr.exe -Unpack -packagePath "C:\Users\mmore\Dropbox\PC (3)\Downloads\msixmgr (2)\x86\en-US\msixmgr.exe.mui" -destination "C:\Users\mmore\Dropbox\LAMAR CISD\GRHS\CS\Treemore\VSCODEMSIX\VSCODEVHDCIM\vscodevhdxtype.vhdx" -applyacls -create -filetype "vhdx" -rootDirectory apps
     ```
 
@@ -337,7 +337,7 @@ showing how to assign read-only access to a file he created called `readme.txt`:
 1. Sent me link: <https://christiaanbrinkhoff.com/2020/12/02/the-future-of-application-virtualization-learn-here-how-to-create-and-configure-msix-app-attach-packages-containers-on-windows-10-enterprise-multi-and-single-session-build-2004-and-higher-for-win/>
 2. Amit, very helpful guy, mentioned there was a PS command that might work since our CMD attempts keep failing, so we are trying this command:
 
-    ```powershell
+    ```ps
     New-VHD -SizeBytes 2048MB -Path "C:\Users\mmore\Dropbox\LAMAR CISD\GRHS\CS\Treemore\VSCODEMSIX\vscodevhd.vhd" -Dynamic -Confirm:$false
     ```
 
