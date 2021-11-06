@@ -301,14 +301,13 @@ showing how to assign read-only access to a file he created called `readme.txt`:
 	```cmd
 	msixmgr.exe -Unpack -packagePath <path to package> -destination <output folder> [-applyacls] [-create] [-vhdSize <size in MB>] [-filetype <CIM | VHD | VHDX>] [-rootDirectory <rootDirectory>]
 	```
-
-### ♝**MDIX to VHDx Extension Example**:
+* ♝**MDIX to VHDx Extension Example**: Here is how I entered the command in the elevated command prompt:
 
 	```cmd
 	msixmgr.exe -Unpack -packagePath "C:\Users\ssa\Desktop\FileZillaChanged_3.51.1.0_x64__81q6ced8g4aa0.msix" -destination "c:\temp\FileZillaChanged.vhdx" -applyacls -create -vhdSize 200 -filetype "vhdx" -rootDirectory apps
 	```
 
-* Navigate to the destination folder and confirm that an MSIX image (.VHDX) was created
+* Navigated to the destination folder and confirm that an MSIX image (.VHDX) was created
 
 * ♜: **MDIX to CIM Extension Example**
 
