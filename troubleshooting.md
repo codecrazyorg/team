@@ -242,34 +242,34 @@ New-AzPublicIpAddress @ip
 4. I navigated to the new application group I had created yesterday called "
     4a. The application group would not allow me to create or upload anything because it said there were no MSIX files stored in the Treemore-HostPool, so that's where I went next:
 5. From the Azure online portal I navigated to All Resources>Treemore-HostPool
-    5a. From within the Treemore-HostPool I went to the left navigation frame and selected Manage>MSIX packages
-    5b. I clicked on the "+ Add" button.
-    5c. A window popped up on the right side of the screen asking for an "MSIX image path"
-        5c1. Hovering over the small (i) icon revealed this tooltip:
+	5a. From within the Treemore-HostPool I went to the left navigation frame and selected Manage>MSIX packages
+	5b. I clicked on the "+ Add" button.
+	5c. A window popped up on the right side of the screen asking for an "MSIX image path"
+		5c1. Hovering over the small (i) icon revealed this tooltip:
 
-        ```txt
-        "This is the path to a file share where the MSIX app attach container has been uploaded. VMs in the host must have read-only access on this path."
-        ```
+				```txt
+				"This is the path to a file share where the MSIX app attach container has been uploaded. VMs in the host must have read-only access on this path."
+				```
         
-        5c2. I need to rememember to ensure IAM roles for the 3 VMs (TREE0; TREE1; & TREE2) all have read-only access using either `sudo chmod 444` (read-only command in Linux BASH; `attrib +r` in Elevated Windows CMD (probably not applicable here); or a similar set of commands in PowerShell--see below for PowerShell command to make read-only).
+		5c2. I need to rememember to ensure IAM roles for the 3 VMs (TREE0; TREE1; & TREE2) all have read-only access using either `sudo chmod 444` (read-only command in Linux BASH; 		`attrib +r` in Elevated Windows CMD (probably not applicable here); or a similar set of commands in PowerShell--see below for PowerShell command to make read-only).
         
-        5c3. **PowerShell Commands to Make Read-Only**
-            5c3i. First, we must get the current attributes (remember, PS commands are `verb-noun` constructions):
+		5c3. **PowerShell Commands to Make Read-Only**
+				5c3i. First, we must get the current attributes (remember, PS commands are `verb-noun` constructions):
 
-            ```pwsh
-            get-item -Path "c:\shared\readme.txt" | format-table name, attributes # (This is just an example showing how to fetch the current attributes of the filename)
-            $file = Get-Item -Path "c:\shared\readme.txt" # (This assigns a variable named `file` to the path using the `$` prefix for variable assignments in PowerShell)
-            $file.Attributes # (This fetches the current attributes of the variable `file`)
-            $file.Attributes = @($file.Attributes,"ReadOnly") # (This command uses the assignment operator `=` and the `array operator` denoted by the "at symbol" `@` to *create a new array* which inherits all the attributes of the `$file` variable, adds the `ReadOnly` attribute, then **appends** the existing `$file` variable attributes with the new `@` array `ReadOnly` attributes (see ♕ for error and 🍕 to see how I solved it).
-            ```
-
-        5c4. Example from AdamTheAutomator
-            * [AdamTheAutomator's Tutorial](https://adamtheautomator.com/how-to-make-a-file-read-only/) showing how to assign read-only access to a file he created called `readme.txt`:
-        
-           * Note: I would do the same for my `VSCODE.msix` package
-           * ♕: I realized later I *first* needed to **convert** the `MSIX` package to either a `VHD` or `CMI` file *but I did not know this at the time* so I am posting this because *this was the timeline* of how I *tried and failed*, then *finally* learned how to do it **correctly**:
+            	```pwsh
+            	get-item -Path "c:\shared\readme.txt" | format-table name, attributes # (This is just an example showing how to fetch the current attributes of the filename)
+            	$file = Get-Item -Path "c:\shared\readme.txt" # (This assigns a variable named `file` to the path using the `$` prefix for variable assignments in PowerShell)
+            	$file.Attributes # (This fetches the current attributes of the variable `file`)
+            	$file.Attributes = @($file.Attributes,"ReadOnly") # (This command uses the assignment operator `=` and the `array operator` denoted by the "at symbol" `@` to 
+							```
+							
+		5c4. Example from AdamTheAutomator
+			* [AdamTheAutomator's Tutorial](https://adamtheautomator.com/how-to-make-a-file-read-only/) \
+				showing how to assign read-only access to a file he created called `readme.txt`:
+			* Note: I would do the same for my `VSCODE.msix` package
+			* ♕: I realized later I *first* needed to **convert** the `MSIX` package to either a `VHD` or `CMI` file *but I did not know this at the time* so I am posting this because *this was the timeline* of how I *tried and failed*, then *finally* learned how to do it **correctly**:
             
-                ```
+                ```powershell
                 PS C:\> $file = get-item -Path "c:\shared\readme.txt"
                 PS C:\> $file.Attributes # Just returned Archive as only attribute in Adam's code example
                 PS C:\> $file.Attributes = @($file.Attributes,"ReadOnly") # Assigns new array to `$file` existing `Attributes` (**appends** to existing attributes) and makes variable `ReadOnly`.
@@ -302,7 +302,7 @@ New-AzPublicIpAddress @ip
            
             ♜: **MDIX to CIM Extension Example**
                 
-                ```
+                ```cmd
                 msixmgr.exe -Unpack -packagePath "C:\Users\ssa\Desktop\FileZillaChanged_3.51.1.0_x64__81q6ced8g4aa0.msix" -destination "c:\temp\FileZillaChanged.cim" -applyacls -create -vhdSize 200 -filetype "cim" -rootDirectory apps
                 ```
 
@@ -312,7 +312,7 @@ New-AzPublicIpAddress @ip
 2. Unfortunately, the same error was returned, namely, "'msixmgr.exe' is not recognized as an internal or external command, operable program or batch file."
     * Here is the exact script I an in an elevated CMD:
 
-    ```pwsh
+    ```powershell
     msixmgr.exe -Unpack -packagePath "C:\Users\mmore\Dropbox\PC (3)\Downloads\msixmgr (2)\x86\en-US\msixmgr.exe.mui" -destination "C:\Users\mmore\Dropbox\LAMAR CISD\GRHS\CS\Treemore\VSCODEMSIX\VSCODEVHDCIM\vscodevhdxtype.vhdx" -applyacls -create -filetype "vhdx" -rootDirectory apps
     ```
 
@@ -320,7 +320,7 @@ New-AzPublicIpAddress @ip
 
 "C:\Users\mmore\Dropbox\LAMAR CISD\GRHS\CS\Treemore\VSCODEMSIX\vscodemsixpkg.msix"
 
-    ```pwsh
+    ```powershell
     msixmgr.exe -Unpack -packagePath "C:\Users\mmore\Dropbox\PC (3)\Downloads\msixmgr (2)\x86\en-US\msixmgr.exe.mui" -destination "C:\Users\mmore\Dropbox\LAMAR CISD\GRHS\CS\Treemore\VSCODEMSIX\VSCODEVHDCIM\vscodevhdxtype.vhdx" -applyacls -create -filetype "vhdx" -rootDirectory apps
     ```
 
@@ -329,7 +329,7 @@ New-AzPublicIpAddress @ip
 1. Sent me link: <https://christiaanbrinkhoff.com/2020/12/02/the-future-of-application-virtualization-learn-here-how-to-create-and-configure-msix-app-attach-packages-containers-on-windows-10-enterprise-multi-and-single-session-build-2004-and-higher-for-win/>
 2. Amit, very helpful guy, mentioned there was a PS command that might work since our CMD attempts keep failing, so we are trying this command:
 
-    ```pwsh
+    ```powershell
     New-VHD -SizeBytes 2048MB -Path "C:\Users\mmore\Dropbox\LAMAR CISD\GRHS\CS\Treemore\VSCODEMSIX\vscodevhd.vhd" -Dynamic -Confirm:$false
     ```
 
@@ -360,9 +360,10 @@ $env:AZCOPY_CRED_TYPE = "";
     Product: Azure/Azure Dedicated Host/Configuration Issues on Dedicated Host/Host issues
     Azure Subscription: Azure subscription 1
     Azure Subscription ID: f31ae3bb-1685-4331-975d-fbb97598b68b
+		```
     
-    Details: Current Host Pool was setup with Azure Virtual Active Directory instead of Azure AD; now I am trying to link an MSIX-rendered VHD file through a fileshare and cannot make the connection...after several hours of troubleshooting the tech Amit suggested the issue may rest at the domain controller level. No limitations for AD Join service wherein we cannot deploy MS App Attach; in other words, I cannot communicate across my network between my resources. Problem start date and time; Thu, Nov 4, 2021, 12:00 AM CDT.
-    ```
+	A. Details: Current Host Pool was setup with Azure Virtual Active Directory instead of Azure AD; now I am trying to link an MSIX-rendered VHD file through a fileshare and cannot make the connection...after several hours of troubleshooting the tech Amit suggested the issue may rest at the domain controller level. No limitations for AD Join service wherein we cannot deploy MS App Attach; in other words, I cannot communicate across my network between my resources. Problem start date and time; Thu, Nov 4, 2021, 12:00 AM CDT.
+    
 
 ## Surya (technician number 28 in the last the 3 weeks) from MS Networking Team Begins at 5:40 PM CST
 
