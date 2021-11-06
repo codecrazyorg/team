@@ -1,12 +1,18 @@
-# NEW AZURE ACCOUNT
+# MORELLI AZURE DANTE-ESQUE CIRCLES OF HELL NIGHTMARE TROUBLESHOOTING DOC
 
 ## Account Details
 
-### Current Account Linked to Most Current and Primary Support Request ID 2111050040007156
+### Current Live and Active Account Linked to Most Current and Primary Support Request ID 2111050040007156
 * Note: Support Request ID 2111050040007156 is linked to, built upon, and was initiated by a request\
 from engineer Amit who was attempting to resolve Support Request ID 2111050040000938
+
 #### Organization
 * Treemore LLC
+* Treemore Azure Tenant ID: f3061bf4-67d3-4727-9b5c-e8d05a9a5e4e
+* Treemore Azure Directory ID: f3061bf4-67d3-4727-9b5c-e8d05a9a5e4e
+* Treemore Azure Subscription ID: f31ae3bb-1685-4331-975d-fbb97598b68b
+* Linked Microsoft Office 365 ID: 10032001A1E5A1ED
+* 
 #### Global Account Administrator
 * Name: Carlo Morelli
 * Azure Username: mmorelli@treemore.com
@@ -15,7 +21,14 @@ from engineer Amit who was attempting to resolve Support Request ID 211105004000
 * Alternate emails: mmorelli@live.com; mmorelli@treemore.com; teachermorelli@gmail.com; carlo.morelli@lcisd.org
 
 ### Previous Accounts Dealing with the Same Issue
+* Note: The below accounts are still being billed; still active; **I'm a high school teacher...**\
+*There must come an end to all this soon*, I can't afford to pay $3K+/mo. for 3 accounts.\
+The *only account which should be active*; the *only account* which should have *any* billing,\
+is the one indicated above: **Treemore LLC/mmorelli@treemore.com**.\
+**Any other existing accounts** and their associated subscriptions, resources, hosts, tenants,\
+organizations—literally *anything* linked to the accounts below should be **terminated and deleted** *immediately*.
 
+#### Most Recent Now-Moribund and Essentially Dead and Functionless Account
 * carlommorellioutlook.onmicrosoft.com <-- default domain for the new Azure tenant
 * Tenant ID: `2c68e9d5-7255-4a9d-9a6b-95cf341945f7`
 * carlo.m.morelli@outlook.com (super user)
@@ -23,9 +36,36 @@ from engineer Amit who was attempting to resolve Support Request ID 211105004000
 * There is no `Management Group`.
 * A group called AAD DC Administrators was created automatically...not sure what it means or who is in it or who controls or who owns it.
 
-## Actions
+## History of All Accounts Troubleshooting Efforts and Cases in Chronological Order
 
-1. Create `Microsoft 365 Group` called `team`.
+### TROUBLESHOOTING USER ACCESS ERROR TO WVD/AVD
+
+##### Actions Taken to Resolve AVD/WVD User/Group Session Error "Your do not have access to this resource"
+
+###### First thing I did at 7:45 AM CDT on 10-30-2021
+* Created IAM Role Assignment to AVD/WVD Virtual Machine Code-Crazy-0 granting role Virtual Machine User Login to Group "Programmers". 
+* Programmers has type "Security Group" and Object ID of 
+ed61d18b-2055-461d-b619-f9110ad49971 and is type "Group".
+* The scope of this Role Assignment is: /subscriptions/b520aa79-4f34-44f6-af71-8b5711f5d0e6/resourceGroups/AzureVirtualDesktopResourceGroupCodeCrazy/providers/Microsoft.Compute/virtualMachines/CodeCrazy-0
+
+###### Second thing I did at 7:49 AM CDT on 10-30-2021:
+* Created Administrative Unit resource called "CodeCrazyAdministrativeUnit"
+* Description: This is the Administrative Unit (AU) for the Code Crazy tenant.
+* Assigned Roles as follows:
+** Role "Authentication administrator"
+*** Selected Items:
+**** mmorelli@codecrazywin.com
+**** rflickner@live.com
+**** admin@AthenianStranger.onmicrosoft.com
+** Role "Groups administrator"
+*** Selected Items:
+**** mmorelli@codecrazywin.com
+**** rflickner@live.com
+**** admin@AthenianStranger.onmicrosoft.com
+
+### SECOND COMPLETE DELETE, NEW ACCOUNT, NEW EVERYTHING
+
+1. Created `Microsoft 365 Group` called `team`.
 2. Created a `Subscription` named `AzureMorelli`.
     2a. Created `Resource Group` called `CodeCrazyResourceGroup`.
         *Note: Used `East US` as region.
