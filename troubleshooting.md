@@ -36,6 +36,8 @@ organizations—literally *anything* linked to the accounts below should be **te
 * There is no `Management Group`.
 * A group called AAD DC Administrators was created automatically...not sure what it means or who is in it or who controls or who owns it.
 
+#### Oldest Account (will add details later I'm exhausted) is under mmorelli@live.com and was called CodeCrazy and the tenant was, I think, athenianstranger
+
 ## History of All Accounts Troubleshooting Efforts and Cases in Chronological Order
 
 ### TROUBLESHOOTING USER ACCESS ERROR TO WVD/AVD
