@@ -296,39 +296,42 @@ showing how to assign read-only access to a file he created called `readme.txt`:
 5d2v. Run the following CMD command:
 * MSIXMGR Code Template
 
-        ```cmd
-        msixmgr.exe -Unpack -packagePath <path to package> -destination <output folder> [-applyacls] [-create] [-vhdSize <size in MB>] [-filetype <CIM | VHD | VHDX>] [-rootDirectory <rootDirectory>]
-        ```
+	```cmd
+	msixmgr.exe -Unpack -packagePath <path to package> -destination <output folder> [-applyacls] [-create] [-vhdSize <size in MB>] [-filetype <CIM | VHD | VHDX>] [-rootDirectory <rootDirectory>]
+	```
 
 ### ♝**MDIX to VHDx Extension Example**:
 
-        ```cmd
-        msixmgr.exe -Unpack -packagePath "C:\Users\ssa\Desktop\FileZillaChanged_3.51.1.0_x64__81q6ced8g4aa0.msix" -destination "c:\temp\FileZillaChanged.vhdx" -applyacls -create -vhdSize 200 -filetype "vhdx" -rootDirectory apps
-        ```
-            
-        5d2vi. Navigate to the destination folder and confirm that an MSIX image (.VHDX) was created
+	```cmd
+	msixmgr.exe -Unpack -packagePath "C:\Users\ssa\Desktop\FileZillaChanged_3.51.1.0_x64__81q6ced8g4aa0.msix" -destination "c:\temp\FileZillaChanged.vhdx" -applyacls -create -vhdSize 200 -filetype "vhdx" -rootDirectory apps
+	```
 
-        ♜: **MDIX to CIM Extension Example**
+* Navigate to the destination folder and confirm that an MSIX image (.VHDX) was created
 
-        ```cmd
-        msixmgr.exe -Unpack -packagePath "C:\Users\ssa\Desktop\FileZillaChanged_3.51.1.0_x64__81q6ced8g4aa0.msix" -destination "c:\temp\FileZillaChanged.cim" -applyacls -create -vhdSize 200 -filetype "cim" -rootDirectory apps
-        ```
+* ♜: **MDIX to CIM Extension Example**
 
+	```cmd
+	msixmgr.exe -Unpack -packagePath "C:\Users\ssa\Desktop\FileZillaChanged_3.51.1.0_x64__81q6ced8g4aa0.msix" -destination "c:\temp\FileZillaChanged.cim" -applyacls -create -vhdSize 200 -filetype "cim" -rootDirectory apps
+	```
+	
 ## Error
 
 1. Running the above returned an error indicating `msixmgr.exe` was not installed so I [downloaded it from Mirosoft](https://github.com/microsoft/msix-packaging/releases) and ran the MSI file to install it.
 2. Unfortunately, the same error was returned, namely, "'msixmgr.exe' is not recognized as an internal or external command, operable program or batch file."
-    * Here is the exact script I an in an elevated CMD:
+** Here is the exact script I an in an elevated CMD:
 
-    ```ps
+    ```cmd
     msixmgr.exe -Unpack -packagePath "C:\Users\mmore\Dropbox\PC (3)\Downloads\msixmgr (2)\x86\en-US\msixmgr.exe.mui" -destination "C:\Users\mmore\Dropbox\LAMAR CISD\GRHS\CS\Treemore\VSCODEMSIX\VSCODEVHDCIM\vscodevhdxtype.vhdx" -applyacls -create -filetype "vhdx" -rootDirectory apps
     ```
 
-3. So, we created another MSIX package for VS Code and will now re-attempt the above prompt with the following exact command:
+3. So, we created another MSIX package for VS Code and will now re-attempt the above prompt: 
+** Here is string placed into the `-packagePath` attributed:
+	```cmd
+	"C:\Users\mmore\Dropbox\LAMAR CISD\GRHS\CS\Treemore\VSCODEMSIX\vscodemsixpkg.msix"
+	```
+** Fullly-customized command prompt command:
 
-"C:\Users\mmore\Dropbox\LAMAR CISD\GRHS\CS\Treemore\VSCODEMSIX\vscodemsixpkg.msix"
-
-    ```ps
+    ```cmd
     msixmgr.exe -Unpack -packagePath "C:\Users\mmore\Dropbox\PC (3)\Downloads\msixmgr (2)\x86\en-US\msixmgr.exe.mui" -destination "C:\Users\mmore\Dropbox\LAMAR CISD\GRHS\CS\Treemore\VSCODEMSIX\VSCODEVHDCIM\vscodevhdxtype.vhdx" -applyacls -create -filetype "vhdx" -rootDirectory apps
     ```
 
