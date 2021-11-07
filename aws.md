@@ -260,3 +260,45 @@ Directory NetBIOS Name: codecrazy [//]: # This was not required.
 * Note: I am doing all this from the desktop connector client because we still have to troubleshoot that web connect issue above. Actually, before I do any of this I will create a support ticket about that--the last time I created a ticket Amazon called **INSTANTLY** and a tech was on the phone (same price: $100/month for phone support but *so much faster*).
   * I created a support ticket and was **instantaneously** called by Amazon...*amazing*.
   * I'm going to put this markdown file online so the engineer can look at what I did.
+  
+### How The Problem of Web Access Was Fixed!
+* First, the technician had me go to workspaces
+* Then, he had me click on directories
+* Then, he had me select the directory that I had used to create the Workspaces.
+* Then he had me click on Actions
+* Then he had me cick on Update Details from the dropdown menu
+* Then he had me click on Access Control options
+* Then he had me CHECK THE BOX that was *unchecked* that had the label **Web Access**.
+* Then he had me click on the blue button in the bottom right corner of the screen labeled "Update and Exit"
+
+#### Error Again
+* We tried to connect to the Web Client and *this time* I got passed the registration information prompt and was actually able to enter my username and password; however, the system just spun a circle for several seconds (perhaps 90 seconds) before timing out and failing with this error:
+
+    ```txt
+    Error
+    An error occurred while connecting to your WorkSpace.
+
+    If the problem persists please contact your WorkSpaces administrator.
+    ```
+
+* The technician thought at first there might have been an issue due to the fact that I was *still logged in* to my Workspace session from the *locally insalled access client*, which made sense to me too, so I signed out of it (I did not just exit the window, I signed out properly by clicking start, sign out, etc.).
+* We then tried to reconnect and got the same error.
+* This technian is very clever: He had me click the vertical elipses 
+* ​
+
+​
+
+​
+
+​
+
+​
+
+​
+
+https://docs.aws.amazon.com/workspaces/latest/adminguide/web-access.html#configure_group_policy
+
+
+Error Log for Web Access #1 [link](https://www.dropbox.com/s/zbn8w6vpijymnzx/AWSREMOTEHOSTFAILURELOGclients.amazonworkspaces.com.har?dl=0)
+
+Error Log for Web Access #2 [link](https://www.dropbox.com/s/vuxc3pn61kde6qs/SECOND_ATTEMPT_AFTER_SERVER_CONFIG_AWSREMOTEHOSTFAILURELOGclients.amazonworkspaces.com.har?dl=0)
